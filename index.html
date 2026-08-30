@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vote for [Baby's Name] | Baby of the Year</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-hover: #1d4ed8;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --text: #1e293b;
+      --muted: #64748b;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 1.25rem;
+    }
+    .card {
+      background: var(--card);
+      max-width: 440px;
+      width: 100%;
+      border-radius: 1.25rem;
+      padding: 1.75rem;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
+      text-align: center;
+    }
+    .profile-img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1rem;
+      border: 4px solid #e2e8f0;
+    }
+    h1 { font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .badge {
+      display: inline-block;
+      background: #e0f2fe;
+      color: #0369a1;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    p { font-size: 0.95rem; color: var(--muted); line-height: 1.5; margin-bottom: 1.25rem; }
+    .btn-vote {
+      display: block;
+      width: 100%;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 1rem;
+      border-radius: 0.75rem;
+      font-size: 1.1rem;
+      transition: background 0.2s;
+      box-shadow: 0 4px 12px rgba(37, 99, 235, 0.25);
+    }
+    .btn-vote:hover { background: var(--primary-hover); }
+    .info-box {
+      background: #f1f5f9;
+      border-radius: 0.75rem;
+      padding: 0.85rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 1.25rem;
+      text-align: left;
+      line-height: 1.4;
+    }
+    .info-box strong { color: var(--text); }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <img src="YOUR_PHOTO_URL.jpg" alt="Baby Name" class="profile-img" />
+    <span class="badge">Baby of the Year 2026</span>
+    <h1>Help [Baby's Name] Win!</h1>
+    <p>You can cast <strong>1 FREE vote every 24 hours</strong>. Every single vote counts towards advancing to the next round!</p>
+
+    <a href="YOUR_DIRECT_VOTING_URL" class="btn-vote" id="voteLink" target="_blank" rel="noopener">
+      Cast Free Daily Vote 🗳️
+    </a>
+
+    <div class="info-box">
+      ℹ️ <strong>Why Facebook Login?</strong> The contest uses Facebook OAuth solely to verify you are a real person and prevent automated spam bots. No posts will ever be made to your account.
+    </div>
+  </div>
+
+  <script>
+    // Breakout helper for in-app browsers
+    const isInstagram = navigator.userAgent.includes('Instagram');
+    const isTikTok = navigator.userAgent.includes('TikTok') || navigator.userAgent.includes('Bytedance');
+    
+    if (isInstagram || isTikTok) {
+      // Directs Android intents to default system browser if applicable
+      const directUrl = "YOUR_DIRECT_VOTING_URL";
+      const link = document.getElementById('voteLink');
+      if (/Android/i.test(navigator.userAgent)) {
+        link.href = `intent://${directUrl.replace(/^https?:\/\//, '')}#Intent;scheme=https;package=com.android.chrome;end`;
+      }
+    }
+  </script>
+</body>
+</html>
